@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
-
+using MVCEFMidTerm.ViewModels;
 namespace MVCEFMidTerm.Controllers
 {
     public class StudentsController : Controller
@@ -28,21 +28,64 @@ namespace MVCEFMidTerm.Controllers
         }
         public ActionResult Create()
         {
-            return View();
+            
+            List<Course> courses = _context.Courses.ToList();
+            StudentFormViewModel viewModel = new StudentFormViewModel
+            {
+                Student = new Student(),
+                Courses = courses
+            };
+            return View("StudentForm",viewModel);
         }
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            return View();
+            Student student = _context.Students.SingleOrDefault(s => s.Id == id);
+            if (student == null)
+                return HttpNotFound();
+            StudentFormViewModel viewModel = new StudentFormViewModel
+            {
+                Student = student,
+                Courses = _context.Courses.ToList()
+            };       
+            
+            return View("StudentForm",viewModel);
+        }
+        
+        public ActionResult Delete(int? id)
+        {
+            Student student = _context.Students.SingleOrDefault(s => s.Id == id);
+            if (student == null)
+                return HttpNotFound();
+            //_context.Entry(student).State = System.Data.Entity.EntityState.Deleted;
+            _context.Students.Remove(student);
+            _context.SaveChanges();
+            return RedirectToAction("List","Students");
         }
 
-        public ActionResult Delete()
+        [HttpPost]
+        public ActionResult Update(Student student)
         {
-            return View();
-        }
-
-        public ActionResult Update()
-        {
-            return View();
+            //StudentFormViewModel viewModel = new StudentFormViewModel
+            //{
+            //    Student = student,
+            //    Courses = _context.Courses.ToList()
+            //};
+            if (student.Id == 0)
+            {
+                _context.Students.Add(student);
+            }
+            else
+            {
+                Student studentInDb = _context.Students.Single(s => s.Id == student.Id);
+                studentInDb.FirstName = student.FirstName;
+                studentInDb.LastName = student.LastName;
+                studentInDb.CourseId = student.CourseId;
+                studentInDb.CourseEnrolledDate = student.CourseEnrolledDate;
+                studentInDb.CourseStatus = student.CourseStatus;
+                studentInDb.Grade = student.Grade;
+            }
+            _context.SaveChanges();
+            return RedirectToAction("List","Students");
         }
     }
 }

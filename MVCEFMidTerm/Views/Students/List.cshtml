@@ -5,6 +5,9 @@
 }
 
 <h2>Students List</h2>
+<p>@Html.ActionLink("New","Create","Students",null,new { @class="btn btn-primary"})</p>
+@*<p>@Html.ActionLink("Delete", "Delete", "Students", null, new { @class = "btn btn-primary" })</p>*@
+
 
 <table class="table table-bordered table-hover">
     <thead>
@@ -15,6 +18,8 @@
             <th>Date Of Joining</th>
             <th>Status</th>
             <th>Grade</th>
+            <th>Actions</th>
+            @*<th>Action2</th>*@
         </tr>
     </thead>
     <tbody>
@@ -22,17 +27,20 @@
         {
         <tr>
             @*<td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>*@
-            @*<td>@Html.ActionLink(student.FirstName, "Edit", "Customers", new { id = customer.Id }, null)</td>*@
+            @*<td>@Html.ActionLink(student.FirstName, "Edit", "Students", new { id = student.Id }, null)</td>*@
             <td>@student.FirstName</td>
             <td>@student.LastName</td>
             <td>@student.Course.CourseName</td>
             <td>@student.CourseEnrolledDate</td>
             <td>@student.CourseStatus</td>
             <td>@student.Grade</td>
+            <td>@Html.ActionLink("Edit/", "Edit", "Students", new { id = student.Id }, null)
+            @Html.ActionLink("Delete", "Delete", "Students", new { id = student.Id }, null)</td>
         </tr>
         }
-    </tbody>
+    </tbody>,
 </table>
+
 
 
 
