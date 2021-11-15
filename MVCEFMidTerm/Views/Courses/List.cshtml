@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MVCEFMidTerm.Models.Course>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Course List</h2>
+<p>@Html.ActionLink("New", "Create", "Courses", null, new { @class = "btn btn-primary" })</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td> Sl.Number </td>
+            <td> Course Name </td>
+            <td> Course Description </td>
+            <td> Tutor Name </td>
+            <td>Rating </td>
+            <td>Actions...</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Id</td>
+                <td>@course.CourseName</td>
+                <td>@course.CourseDescription</td>
+                <td>@course.TutorName</td>
+                <td>@course.CourseRating</td>
+                @*<td>@Html.ActionLink("Edit", "Edit", "Courses",null, new { @class = "btn btn-primary" })</td>*@
+                
+                <td>
+                    @Html.ActionLink("Edit/", "Edit", "Courses", new { id = course.Id }, null)
+                    @Html.ActionLink("Delete", "Delete", "Courses", new { id = course.Id }, null)
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+
+</table>
+

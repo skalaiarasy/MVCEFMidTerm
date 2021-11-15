@@ -65,11 +65,17 @@ namespace MVCEFMidTerm.Controllers
         [HttpPost]
         public ActionResult Update(Student student)
         {
-            //StudentFormViewModel viewModel = new StudentFormViewModel
-            //{
-            //    Student = student,
-            //    Courses = _context.Courses.ToList()
-            //};
+            
+            if (!ModelState.IsValid)
+            {
+                
+               StudentFormViewModel viewModel = new StudentFormViewModel
+               {
+                   Student = student,
+                   Courses = _context.Courses.ToList()
+               };
+                return View("StudentForm", viewModel);
+            }
             if (student.Id == 0)
             {
                 _context.Students.Add(student);

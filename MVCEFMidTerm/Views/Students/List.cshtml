@@ -14,6 +14,7 @@
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Date Of Birth</th>
             <th>Course Name</th>
             <th>Date Of Joining</th>
             <th>Status</th>
@@ -30,9 +31,11 @@
             @*<td>@Html.ActionLink(student.FirstName, "Edit", "Students", new { id = student.Id }, null)</td>*@
             <td>@student.FirstName</td>
             <td>@student.LastName</td>
+            <td>@student.Birthdate</td>
             <td>@student.Course.CourseName</td>
             <td>@student.CourseEnrolledDate</td>
-            <td>@student.CourseStatus</td>
+            @if (student.CourseId == 1) {<td>Progress</td> }
+            else { <td>Completed</td>}            
             <td>@student.Grade</td>
             <td>@Html.ActionLink("Edit/", "Edit", "Students", new { id = student.Id }, null)
             @Html.ActionLink("Delete", "Delete", "Students", new { id = student.Id }, null)</td>

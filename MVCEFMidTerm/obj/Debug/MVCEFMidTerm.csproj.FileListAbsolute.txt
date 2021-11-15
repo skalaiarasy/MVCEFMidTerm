@@ -84,3 +84,6 @@ C:\Users\Kalaiarasy\source\repos\MVCEFMidTerm\MVCEFMidTerm\obj\Debug\MVCEFMidTer
 C:\Users\Kalaiarasy\source\repos\MVCEFMidTerm\MVCEFMidTerm\obj\Debug\MVCEFMidTerm.Migrations.InitialModelCreation.resources
 C:\Users\Kalaiarasy\source\repos\MVCEFMidTerm\MVCEFMidTerm\obj\Debug\MVCEFMidTerm.csproj.GenerateResource.cache
 C:\Users\Kalaiarasy\source\repos\MVCEFMidTerm\MVCEFMidTerm\obj\Debug\MVCEFMidTerm.Migrations.CoursePropertyAddedInStudentModel.resources
+C:\Users\Kalaiarasy\source\repos\MVCEFMidTerm\MVCEFMidTerm\obj\Debug\MVCEFMidTerm.Migrations.AddedRequiredInModels.resources
+C:\Users\Kalaiarasy\source\repos\MVCEFMidTerm\MVCEFMidTerm\obj\Debug\MVCEFMidTerm.Migrations.AddedBirthdate.resources
+C:\Users\Kalaiarasy\source\repos\MVCEFMidTerm\MVCEFMidTerm\obj\Debug\MVCEFMidTerm.Migrations.ToPopulateBirthDate.resources

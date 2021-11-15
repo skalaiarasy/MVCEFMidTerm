@@ -5,12 +5,14 @@
 }
 
 <h2>New Student</h2>
+@Html.ValidationSummary();
 @using (Html.BeginForm("Update", "Students"))
 {
-    <div class="form-group">
-        @Html.LabelFor(s => s.Student.FirstName)
-        @Html.TextBoxFor(s => s.Student.FirstName, new { @class = "form-control" })
-    </div>
+<div class="form-group">
+    @Html.LabelFor(s => s.Student.FirstName)
+    @Html.TextBoxFor(s => s.Student.FirstName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(s=>s.Student.FirstName)
+</div>
     <div class="form-group">
         @Html.LabelFor(s => s.Student.LastName)
         @Html.TextBoxFor(s => s.Student.LastName, new { @class = "form-control" })
@@ -18,20 +20,35 @@
     <div class="form-group">
         @Html.LabelFor(s => s.Student.CourseEnrolledDate)
         @Html.TextBoxFor(s => s.Student.CourseEnrolledDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.CourseEnrolledDate)
     </div>
     <div class="form-group">
         @Html.LabelFor(s => s.Student.CourseId)
         @Html.DropDownListFor(s => s.Student.CourseId,
        new SelectList(Model.Courses, "Id", "CourseName"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.CourseId)
     </div>
     <div class="form-group">
+        @Html.LabelFor(s => s.Student.Birthdate)
+        @Html.TextBoxFor(s => s.Student.Birthdate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.Birthdate)
+        
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(s => s.Student.CourseStatus)
-        @Html.DropDownListFor(s => s.Student.CourseStatus,
-        new SelectList("01"), "" , new { @class = "form-control" })
+        @Html.DropDownList("CourseStatus", new List<SelectListItem>
+            {
+            new SelectListItem{ Text="In Progress", Value = "1" },
+            new SelectListItem{ Text="Completed", Value = "2" },
+            }, new { @class = "form-control" })
+
+        @Html.ValidationMessageFor(s => s.Student.CourseStatus)
     </div>
     <div class="form-group">
         @Html.LabelFor(s => s.Student.Grade)
         @Html.TextBoxFor(s => s.Student.Grade, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.Grade)
     </div>
     @Html.HiddenFor(s => s.Student.Id)
     <button type="submit" class="btn" btn-primary>Update</button>

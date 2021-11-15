@@ -141,8 +141,21 @@
     <Compile Include="Migrations\202111132042550_CoursePropertyAddedInStudentModel.designer.cs">
       <DependentUpon>202111132042550_CoursePropertyAddedInStudentModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111142023074_AddedRequiredInModels.cs" />
+    <Compile Include="Migrations\202111142023074_AddedRequiredInModels.designer.cs">
+      <DependentUpon>202111142023074_AddedRequiredInModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111142037394_AddedBirthdate.cs" />
+    <Compile Include="Migrations\202111142037394_AddedBirthdate.designer.cs">
+      <DependentUpon>202111142037394_AddedBirthdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111142059599_ToPopulateBirthDate.cs" />
+    <Compile Include="Migrations\202111142059599_ToPopulateBirthDate.designer.cs">
+      <DependentUpon>202111142059599_ToPopulateBirthDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Min18YearsIfAStudent.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -187,10 +200,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Students\List.cshtml" />
     <Content Include="Views\Students\StudentForm.cshtml" />
+    <Content Include="Views\Courses\List.cshtml" />
+    <Content Include="Views\Courses\CourseForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Courses\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -211,6 +225,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111132042550_CoursePropertyAddedInStudentModel.resx">
       <DependentUpon>202111132042550_CoursePropertyAddedInStudentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111142023074_AddedRequiredInModels.resx">
+      <DependentUpon>202111142023074_AddedRequiredInModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111142037394_AddedBirthdate.resx">
+      <DependentUpon>202111142037394_AddedBirthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111142059599_ToPopulateBirthDate.resx">
+      <DependentUpon>202111142059599_ToPopulateBirthDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
