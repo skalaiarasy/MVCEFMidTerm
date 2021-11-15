@@ -6,6 +6,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using MVCEFMidTerm.ViewModels;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core;
+using System.Data.Entity.Validation;
+
 namespace MVCEFMidTerm.Controllers
 {
     public class StudentsController : Controller
@@ -65,33 +69,43 @@ namespace MVCEFMidTerm.Controllers
         [HttpPost]
         public ActionResult Update(Student student)
         {
-            
-            if (!ModelState.IsValid)
+            try
             {
+
+                if (!ModelState.IsValid)
+                {
+
+                    StudentFormViewModel viewModel = new StudentFormViewModel
+                    {
+                        Student = student,
+                        Courses = _context.Courses.ToList()
+                    };
+                    //return View("StudentForm", viewModel);
+                }
+                if (student.Id == 0)
+                {
+                    _context.Students.Add(student);
+                }
+                else
+                {
+                    Student studentInDb = _context.Students.Single(s => s.Id == student.Id);
+                    studentInDb.FirstName = student.FirstName;
+                    studentInDb.LastName = student.LastName;
+                    studentInDb.CourseId = student.CourseId;
+                    studentInDb.CourseEnrolledDate = student.CourseEnrolledDate;
+                    studentInDb.CourseStatus = student.CourseStatus;
+                    studentInDb.Grade = student.Grade;
+                    _context.Entry(studentInDb).State = EntityState.Modified;
+                }
                 
-               StudentFormViewModel viewModel = new StudentFormViewModel
-               {
-                   Student = student,
-                   Courses = _context.Courses.ToList()
-               };
-                return View("StudentForm", viewModel);
+                _context.SaveChanges();
+                return RedirectToAction("List", "Students");
             }
-            if (student.Id == 0)
+            catch(Exception ex)
             {
-                _context.Students.Add(student);
+                var msg = ex.InnerException.Message;
+                return View(msg);
             }
-            else
-            {
-                Student studentInDb = _context.Students.Single(s => s.Id == student.Id);
-                studentInDb.FirstName = student.FirstName;
-                studentInDb.LastName = student.LastName;
-                studentInDb.CourseId = student.CourseId;
-                studentInDb.CourseEnrolledDate = student.CourseEnrolledDate;
-                studentInDb.CourseStatus = student.CourseStatus;
-                studentInDb.Grade = student.Grade;
-            }
-            _context.SaveChanges();
-            return RedirectToAction("List","Students");
         }
     }
 }

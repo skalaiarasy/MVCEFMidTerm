@@ -37,7 +37,7 @@
 
     <div class="form-group">
         @Html.LabelFor(s => s.Student.CourseStatus)
-        @Html.DropDownList("CourseStatus", new List<SelectListItem>
+        @Html.DropDownListFor(s=>s.Student.CourseStatus, new List<SelectListItem>
             {
             new SelectListItem{ Text="In Progress", Value = "1" },
             new SelectListItem{ Text="Completed", Value = "2" },

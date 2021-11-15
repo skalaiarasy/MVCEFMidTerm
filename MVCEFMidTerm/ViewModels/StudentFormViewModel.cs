@@ -11,5 +11,6 @@ namespace MVCEFMidTerm.ViewModels
     {
         public Student Student { get; set; }
         public IEnumerable<Course> Courses { get; set; }
+
     }
 }
