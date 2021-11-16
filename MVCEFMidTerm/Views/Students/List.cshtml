@@ -5,8 +5,7 @@
 }
 
 <h2>Students List</h2>
-<p>@Html.ActionLink("New","Create","Students",null,new { @class="btn btn-primary"})</p>
-@*<p>@Html.ActionLink("Delete", "Delete", "Students", null, new { @class = "btn btn-primary" })</p>*@
+<p>@Html.ActionLink("Create New", "Create", "Students", null, new { @class = "btn btn-primary" })</p>
 
 
 <table class="table table-bordered table-hover">
@@ -19,30 +18,35 @@
             <th>Date Of Joining</th>
             <th>Status</th>
             <th>Grade</th>
-            <th>Actions</th>
-            @*<th>Action2</th>*@
+            <th>Actions...</th>
+            
         </tr>
     </thead>
     <tbody>
         @foreach (var student in Model)
         {
-        <tr>
-            @*<td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>*@
-            @*<td>@Html.ActionLink(student.FirstName, "Edit", "Students", new { id = student.Id }, null)</td>*@
-            <td>@student.FirstName</td>
-            <td>@student.LastName</td>
-            <td>@student.Birthdate</td>
-            <td>@student.Course.CourseName</td>
-            <td>@student.CourseEnrolledDate</td>
-            @if (student.CourseId == 1) {<td>Progress</td> }
-            else { <td>Completed</td>}            
-            <td>@student.Grade</td>
-            <td>@Html.ActionLink("Edit/", "Edit", "Students", new { id = student.Id }, null)
-            @Html.ActionLink("Delete", "Delete", "Students", new { id = student.Id }, null)</td>
-        </tr>
+            <tr>
+                @*<td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>*@
+                @*<td>@Html.ActionLink(student.FirstName, "Edit", "Students", new { id = student.Id }, null)</td>*@
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                <td>@student.Birthdate</td>
+                <td>@student.Course.CourseName</td>
+                <td>@student.CourseEnrolledDate</td>
+                
+                @if (student.CourseId == 1){ <td>Progress</td> }
+                else { <td>Completed</td> }
+
+                <td>@student.Grade</td>
+                <td>
+                    @Html.ActionLink("Edit/", "Edit", "Students", new { id = student.Id }, null)
+                    @Html.ActionLink("Delete", "Delete", "Students", new { id = student.Id }, null)
+                </td>
+            </tr>
         }
-    </tbody>,
+    </tbody>
 </table>
+
 
 
 

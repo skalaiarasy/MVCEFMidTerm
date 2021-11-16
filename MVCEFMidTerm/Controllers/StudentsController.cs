@@ -54,13 +54,13 @@ namespace MVCEFMidTerm.Controllers
             
             return View("StudentForm",viewModel);
         }
-        
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
-            Student student = _context.Students.SingleOrDefault(s => s.Id == id);
+            //Student student = _context.Students.SingleOrDefault(s => s.Id == id);
+            Student student = _context.Students.Find(id);
             if (student == null)
-                return HttpNotFound();
-            //_context.Entry(student).State = System.Data.Entity.EntityState.Deleted;
+                return HttpNotFound();            
             _context.Students.Remove(student);
             _context.SaveChanges();
             return RedirectToAction("List","Students");
@@ -69,8 +69,8 @@ namespace MVCEFMidTerm.Controllers
         [HttpPost]
         public ActionResult Update(Student student)
         {
-            try
-            {
+           // try
+            //{
 
                 if (!ModelState.IsValid)
                 {
@@ -80,7 +80,7 @@ namespace MVCEFMidTerm.Controllers
                         Student = student,
                         Courses = _context.Courses.ToList()
                     };
-                    //return View("StudentForm", viewModel);
+                    return View("StudentForm", viewModel);
                 }
                 if (student.Id == 0)
                 {
@@ -91,21 +91,22 @@ namespace MVCEFMidTerm.Controllers
                     Student studentInDb = _context.Students.Single(s => s.Id == student.Id);
                     studentInDb.FirstName = student.FirstName;
                     studentInDb.LastName = student.LastName;
+                    studentInDb.Birthdate = student.Birthdate;
                     studentInDb.CourseId = student.CourseId;
                     studentInDb.CourseEnrolledDate = student.CourseEnrolledDate;
                     studentInDb.CourseStatus = student.CourseStatus;
                     studentInDb.Grade = student.Grade;
-                    _context.Entry(studentInDb).State = EntityState.Modified;
+                   // _context.Entry(studentInDb).State = EntityState.Modified;
                 }
                 
                 _context.SaveChanges();
                 return RedirectToAction("List", "Students");
-            }
-            catch(Exception ex)
-            {
-                var msg = ex.InnerException.Message;
-                return View(msg);
-            }
+            //}
+            //catch(Exception ex)
+            //{
+            //    var msg = ex.InnerException.Message;
+            //    return View(msg);
+            //}
         }
     }
 }

@@ -5,9 +5,10 @@
 }
 
 <h2>New Student</h2>
-@Html.ValidationSummary();
+@*@Html.ValidationSummary();*@
 @using (Html.BeginForm("Update", "Students"))
 {
+    @Html.AntiForgeryToken();
 <div class="form-group">
     @Html.LabelFor(s => s.Student.FirstName)
     @Html.TextBoxFor(s => s.Student.FirstName, new { @class = "form-control" })
@@ -28,6 +29,7 @@
        new SelectList(Model.Courses, "Id", "CourseName"), "", new { @class = "form-control" })
         @Html.ValidationMessageFor(s => s.Student.CourseId)
     </div>
+
     <div class="form-group">
         @Html.LabelFor(s => s.Student.Birthdate)
         @Html.TextBoxFor(s => s.Student.Birthdate, new { @class = "form-control" })
@@ -35,14 +37,14 @@
         
     </div>
 
+
     <div class="form-group">
         @Html.LabelFor(s => s.Student.CourseStatus)
         @Html.DropDownListFor(s=>s.Student.CourseStatus, new List<SelectListItem>
             {
             new SelectListItem{ Text="In Progress", Value = "1" },
             new SelectListItem{ Text="Completed", Value = "2" },
-            }, new { @class = "form-control" })
-
+            }, "", new { @class = "form-control" })
         @Html.ValidationMessageFor(s => s.Student.CourseStatus)
     </div>
     <div class="form-group">
@@ -51,7 +53,7 @@
         @Html.ValidationMessageFor(s => s.Student.Grade)
     </div>
     @Html.HiddenFor(s => s.Student.Id)
-    <button type="submit" class="btn" btn-primary>Update</button>
+    <button type="submit" class="btn btn-primary">Update</button>
 }
 
 
