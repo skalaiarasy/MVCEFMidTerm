@@ -27,45 +27,41 @@ namespace MVCEFMidTerm.Controllers
             return View(courses);
         }
 
+        //To create a new course
         public ActionResult Create()
         {
-            //List<Course> courses = _context.Courses.ToList();
             var course = new Course();
             return View("CourseForm",course);
         }
+
+        //To edit the particluar record
         public ActionResult Edit(int id)
         {
             Course course = _context.Courses.SingleOrDefault(c => c.Id == id);
             if (course == null)
                 return HttpNotFound();
-            //StudentFormViewModel viewModel = new StudentFormViewModel
-            //{
-            //    Student = student,
-            //    Courses = _context.Courses.ToList()
-            //};
-
-
+            
             return View("CourseForm", course);
         }
 
-        public ActionResult Delete(int? id)
+        //To delete the particluar record
+        public ActionResult Delete(int id)
         {
             Course course = _context.Courses.SingleOrDefault(s => s.Id == id);
             if (course == null)
-                return HttpNotFound();
-            //_context.Entry(student).State = System.Data.Entity.EntityState.Deleted;
+                return HttpNotFound();            
             _context.Courses.Remove(course);
             _context.SaveChanges();
             return RedirectToAction("List", "Courses");
         }
 
+        //Either create a  new record or edit the existing record ; this action will save back to the database
         [HttpPost]
         public ActionResult Update(Course course)
         {
             if (!ModelState.IsValid)
             {
-                //Course course = new Course();
-                return View("CourseForm", course);
+                return View("CourseForm");
             }
             if (course.Id == 0)
             {
@@ -84,9 +80,13 @@ namespace MVCEFMidTerm.Controllers
             return RedirectToAction("List", "Courses");
         }
 
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+        //Details about the paritcular course
+        public ActionResult Details(int id)
+        {
+            var course = _context.Courses.SingleOrDefault(c => c.Id == id);
+            if (course == null)
+                return HttpNotFound();
+            return View("Details", course);
+        }
     }
 }

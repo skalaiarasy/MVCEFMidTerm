@@ -1,0 +1,21 @@
+﻿@model MVCEFMidTerm.Models.Course
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Course Details</h2>
+@Html.LabelFor(c => c.CourseName)
+@Html.DisplayFor(c => c.CourseName)<br />
+@Html.LabelFor(c => c.CourseDescription)
+@Html.DisplayFor(c => c.CourseDescription)<br />
+@Html.LabelFor(c => c.TutorName)
+@Html.DisplayFor(c => c.TutorName)<br />
+@Html.LabelFor(c => c.CourseRating)
+@Html.DisplayFor(c => c.CourseRating)<br />
+
+@Html.ActionLink("Back", "List", null, new { id = Model.Id },new { @class = "btn btn-primary" }) 
+@Html.ActionLink("Edit", "Edit", null, new { id = Model.Id },new { @class = "btn btn-primary" })
+@Html.ActionLink("Delete", "Delete", null, new { id = Model.Id },new { @class = "btn btn-primary" })
+
+

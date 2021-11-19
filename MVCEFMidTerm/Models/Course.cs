@@ -27,5 +27,18 @@ namespace MVCEFMidTerm.Models
         [Range(1,10,ErrorMessage ="Rate Must be between 1 to 10")]
         [Display(Name = "Course Rating")]
         public int CourseRating { get; set; }
+
+        public string Title 
+        {
+            get
+            {
+                if (Id != 0)
+                {
+                    return "Edit Course";
+                }
+                else
+                    return "New Course";
+            }
+        }
     }
 }

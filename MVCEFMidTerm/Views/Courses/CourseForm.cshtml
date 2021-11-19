@@ -4,32 +4,34 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Course Form</h2>
+<h2>@Model.Title</h2>
 @using (Html.BeginForm("Update", "Courses"))
 {
 
-<div class="form-group">
-    @Html.LabelFor(c => c.CourseName)
-    @Html.TextBoxFor(c => c.CourseName, new { @class = "form-control" })
-    @Html.ValidationMessageFor(c => c.CourseName)
-</div>
-<div class="form-group">
-    @Html.LabelFor(c => c.CourseDescription)
-    @Html.TextBoxFor(c => c.CourseDescription, new { @class = "form-control" })
-    @Html.ValidationMessageFor(c => c.CourseDescription)
-</div>
-<div class="form-group">
-    @Html.LabelFor(c => c.TutorName)
-    @Html.TextBoxFor(c => c.TutorName, new { @class = "form-control" })
-    @Html.ValidationMessageFor(c => c.TutorName)
-</div>
-<div class="form-group">
-    @Html.LabelFor(c => c.CourseRating)
-    @Html.TextBoxFor(c => c.CourseRating, new { @class = "form-control" })
-    @Html.ValidationMessageFor(c => c.CourseRating)
-</div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.CourseName)
+        @Html.TextBoxFor(c => c.CourseName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.CourseName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.CourseDescription)
+        @Html.TextBoxFor(c => c.CourseDescription, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.CourseDescription)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.TutorName)
+        @Html.TextBoxFor(c => c.TutorName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.TutorName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.CourseRating)
+        @Html.TextBoxFor(c => c.CourseRating, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.CourseRating)
+    </div>
     @Html.HiddenFor(c => c.Id)
     <button type="submit" class="btn btn-primary">Update</button>
+    
+
 }
 
 

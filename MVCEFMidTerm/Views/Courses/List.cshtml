@@ -29,10 +29,11 @@
                 <td>@course.CourseRating</td>
                 @*<td>@Html.ActionLink("Edit", "Edit", "Courses",null, new { @class = "btn btn-primary" })</td>*@
                 
-                <td>
-                    @Html.ActionLink("Edit/", "Edit", "Courses", new { id = course.Id }, null)
-                    @Html.ActionLink("Delete", "Delete", "Courses", new { id = course.Id }, null)
-                </td>
+            <td>
+                @Html.ActionLink("Details/", "Details", "Courses", new { id = course.Id }, null)
+                @Html.ActionLink("Edit/", "Edit", "Courses", new { id = course.Id }, null)
+                @Html.ActionLink("Delete", "Delete", "Courses", new { id = course.Id }, null)
+            </td>
             </tr>
 
         }
