@@ -34,15 +34,19 @@
 
             @if (student.CourseStatus == 1)
             {
-                <td class="progress progress-striped active">
-                    <div class="progress-bar progress-bar-info" style="width: 100%">Progress</div>
-
+                <td>
+                    <div class="progress progress-striped active">
+                        
+                    <div class="progress-bar progress-bar-info" style="width: 50%">Progress</div>
+                    </div>
                 </td>
 }
             
             else {
-            <td class="progress progress-striped ">
+            <td> 
+                <div class="progress progress-striped ">
                 <div class="progress-bar progress-bar-success" style="width: 100%">Completed</div>
+                </div>
             </td> }
 
             <td>@student.Grade</td>
