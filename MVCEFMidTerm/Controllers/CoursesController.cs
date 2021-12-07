@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,7 +24,7 @@ namespace MVCEFMidTerm.Controllers
         {
             List<Course> courses = _context.Courses.ToList();
             
-            return View(courses);
+            return View(_context.Courses.ToList());
         }
 
         //To create a new course
