@@ -20,11 +20,13 @@ namespace MVCEFMidTerm.Controllers
         {
             return View();
         }
+
+        //Updated List method - Ravish
         public ActionResult List()
         {
             List<Course> courses = _context.Courses.ToList();
             
-            return View(_context.Courses.ToList());
+            return View(courses);
         }
 
         //To create a new course
